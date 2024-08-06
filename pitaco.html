@@ -1,0 +1,553 @@
+<html lang="pt-BR"><head><base href="/lander/ios_1720984266/index.html">
+    <link rel="icon" type="image/png" href="images/iconbulls.png">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bullsbet - AppStore</title>
+        <link rel="apple-touch-icon" href="images/iconbulls.png">
+        <meta name="apple-mobile-web-app-title" content="Bullsbet">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="theme-color" content="#000000">
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f8f8;
+                text-align: center;
+                overflow-x: hidden;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                background-color: #fff;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+                text-align: left;
+            }
+            .header, .fixed-header {
+                display: flex;
+                align-items: center;
+                padding: 20px;
+                border-bottom: 0.6px solid #ddd;
+            }
+            .fixed-header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                transform: translateY(-100%);
+                transition: transform 0.3s;
+            }
+            .header img, .fixed-header img {
+                width: 90px;
+                height: 90px;
+                border-radius: 12px;
+            }
+            .header .title, .fixed-header .title {
+                flex-grow: 1;
+                margin-left: 20px;
+                display: flex;
+                flex-direction: column;
+            }
+            .header .title h1, .fixed-header .title h1 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+            }
+            .header .title p, .fixed-header .title p {
+                margin: 0;
+                color: #666;
+                font-size: 14px;
+            }
+            .header .title h1 img, .fixed-header .title h1 img {
+                width: 20px;
+                height: 20px;
+                margin-left: 10px;
+            }
+            .header .get-button, .fixed-header .get-button {
+                background-color: #007aff;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 16px;
+                text-decoration: none;
+                display: inline-block;
+                cursor: pointer;
+                font-weight: bold;
+            }
+            .stats {
+                display: flex;
+                justify-content: space-around;
+                padding: 20px;
+                border-bottom: 1px solid #ddd;
+            }
+            .stats div {
+                text-align: center;
+                position: relative;
+                padding: 0 10px;
+            }
+            .stats div:after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 1px;
+                height: 100%;
+                background-color: #ddd;
+            }
+            .stats div:last-child:after {
+                display: none;
+            }
+            .stats div p {
+                margin: 0;
+                font-size: 14px;
+                color: #555;
+            }
+            .stats div span {
+                display: block;
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .screenshots {
+                display: flex;
+                overflow-x: scroll;
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+            .screenshots img {
+                max-height: 300px;
+                margin-right: 10px;
+                border-radius: 10px;
+            }
+            .description, .whats-new, .information, .ratings-reviews {
+                padding: 20px;
+                border-bottom: 1px solid #ddd;
+            }
+            .description p, .whats-new p, .information p {
+                margin: 0;
+                font-size: 14px;
+                color: #555;
+            }
+            .description h2, .whats-new h2, .ratings-reviews h2 {
+                font-size: 18px;
+                margin-top: 0;
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+            }
+            .information p {
+                margin: 5px 0;
+            }
+            .whats-new p {
+                margin: 5px 0;
+            }
+            .ratings-summary {
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+            }
+            .ratings-summary span {
+                font-size: 40px;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .ratings-details {
+                font-size: 14px;
+                color: #555;
+            }
+            .review {
+                margin-top: 10px;
+                padding: 10px;
+                background-color: #f8f8f8;
+                border-radius: 5px;
+            }
+            .review p {
+                margin: 5px 0;
+            }
+            .instructions {
+                display: none;
+                padding: 20px;
+                background-color: #fff;
+                border-top: 0px solid #ddd;
+                position: fixed;
+                bottom: -100%;
+                left: 0;
+                right: 0;
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+                z-index: 1001;
+                transition: bottom 0.5s;
+            }
+            .instruction-step {
+                margin: 20px 0;
+            }
+            .instruction-step img {
+                width: 100%;
+                border-radius: 10px;
+            }
+            .rating-bar-container {
+                display: flex;
+                align-items: center;
+                margin-top: 5px;
+            }
+            .rating-bar {
+                flex: 1;
+                height: 10px;
+                background-color: #ddd;
+                margin: 0 10px;
+                position: relative;
+            }
+            .rating-bar-fill {
+                height: 100%;
+                background-color: #007aff;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .star {
+                font-size: 16px;
+                color: #ffd700;
+                margin-right: 5px;
+            }
+            .rating-count {
+                font-size: 14px;
+                color: #555;
+            }
+            .ratings-distribution {
+                margin-top: 20px;
+            }
+            .ratings-distribution .rating-bar-container {
+                margin-top: 10px;
+            }
+            .info-item {
+                padding: 10px 0;
+                border-top: 1px solid #ddd;
+            }
+            .info-item:last-child {
+                border-bottom: 1px solid #ddd;
+            }
+            .instruction-text {
+                text-align: left;
+            }
+            .instruction-button {
+                text-align: right;
+                margin-top: 0;
+            }
+            .instruction-button button {
+                background-color: #007aff;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 16px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+    
+            @media (max-width: 600px) {
+                .container {
+                    width: 100%;
+                }
+                .fixed-header, .header {
+                    padding: 20px;
+                }
+                .header img, .fixed-header img {
+                    width: 90px;
+                    height: 90px;
+                }
+                .header .title h1, .fixed-header .title h1 {
+                    font-size: 16px;
+                }
+                .header .title p, .fixed-header .title p {
+                    font-size: 12px;
+                }
+                .header .get-button, .fixed-header .get-button {
+                    padding: 8px 16px;
+                    font-size: 14px;
+                }
+                .stats div span {
+                    font-size: 14px;
+                }
+                .stats div p {
+                    font-size: 12px;
+                }
+                .screenshots img {
+                    max-height: 300px;
+                }
+            }
+        </style>
+    <style>.windowPopup___hXPQC {
+      height: 56px;
+      width: 56px;
+      border-radius: 7px 0px 0px 7px;
+      overflow: hidden;
+      transition: height 0.5s, width 0.5s;
+      float: right;
+      display: flex;
+      flex-direction: column;
+      margin-top: 6px;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 1px, rgba(0, 0, 0, 0.25) 0px 1.5px 6px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+      font-family: Helvetica, Arial, sans-serif;
+      border: 0;
+    }
+    .windowPopup___hXPQC.expanded___0nU-K {
+      width: 350px;
+      height: 250px;
+    }
+    .windowPopup___hXPQC.expanded___0nU-K .titleBar___rb1QT {
+      cursor: default;
+    }
+    .windowPopup___hXPQC .titleBar___rb1QT {
+      background-image: linear-gradient(45deg, #f4496f 0%, #ff4bcf 100%);
+      height: 56px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 8px 4px 8px 8px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .windowPopup___hXPQC .titleBar___rb1QT .shopifyIcon___9P37F {
+      height: 40px;
+      width: 40px;
+      -webkit-user-drag: none;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    .windowPopup___hXPQC .titleBar___rb1QT .titleBarText___k69VM {
+      color: white;
+      font-size: 21px;
+      font-weight: lighter;
+      white-space: nowrap;
+      flex-grow: 1;
+      user-select: none;
+    }
+    .windowPopup___hXPQC .titleBar___rb1QT .closeButton___YHs1q {
+      color: white;
+    }
+    .windowPopup___hXPQC .titleBar___rb1QT .closeButton___YHs1q:hover {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 {
+      background-color: white;
+      flex-grow: 1;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .shopInfo___PRZ3p {
+      flex-grow: 1;
+      font-size: 18px;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .shopInfo___PRZ3p > * {
+      min-width: 326px;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .shopInfo___PRZ3p .popupContentText___rSaSv {
+      margin-bottom: 12px;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .shopInfo___PRZ3p .randomShopInfo___nHBKK {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .checkOutMore___QfkE4 {
+      min-width: 326px;
+      display: flex;
+      align-items: center;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .checkOutMore___QfkE4 .checkOutMoreImage___LqSw5 {
+      width: 150px;
+      margin-right: 8px;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .checkOutMore___QfkE4 .checkOutMoreText___p-Mtf {
+      font-size: 14px;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .blockOptions___Lxhtg {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      margin-top: 12px;
+    }
+    .windowPopup___hXPQC .popupContent___8Zm76 .blockOptions___Lxhtg .optionsButton___vRN2w {
+      padding-top: 4px;
+      color: #b3b3b3;
+      text-decoration: underline;
+      cursor: pointer;
+      width: fit-content;
+    }
+    .windowPopupIframe___4Hb8g {
+      width: 0px;
+      height: 0px;
+      z-index: 2147483647 !important;
+      position: fixed !important;
+      top: 285px !important;
+      right: 0px !important;
+      border: 0 !important;
+    }
+    </style></head>
+    <body>
+        <div class="fixed-header">
+            <img src="images/iconbulls.png" alt="App Icon">
+            <div class="title">
+                <h1>Bullsbet<img src="images/seloverificado.png" alt="Verified Icon"></h1>
+            </div>
+            <a class="get-button" onclick="showInstructions()">OBTER</a>
+        </div>
+        <div class="container">
+            <div class="header">
+                <img src="images/iconbulls.png" alt="App Icon">
+                <div class="title">
+                    <h1>Bullsbet<img src="images/seloverificado.png" alt="Verified Icon"></h1>
+                    <p>O Melhor Cassino Online!</p>
+                </div>
+                <a class="get-button" onclick="showInstructions()">OBTER</a>
+            </div>
+            <div class="stats">
+                <div>
+                    <span>21 MIL AVALIAÇÕES</span>
+                    <p>4.9</p>
+                </div>
+                <div>
+                    <span>TAMANHO</span>
+                    <p>1 MB</p>
+                </div>
+                <div>
+                    <span>IDADE</span>
+                    <p>18+</p>
+                </div>
+            </div>
+            <div class="screenshots">
+                <img src="images/app_01.jpg" alt="Screenshot 1">
+                <img src="images/app_02.jpg" alt="Screenshot 2">
+                <img src="images/app_03.jpg" alt="Screenshot 3">
+            </div>
+            <div class="description">
+                <h2>Descrição</h2>
+                <p>Bem-vindo ao Bullsbet, onde a diversão e as grandes vitórias se encontram! Desfrute de uma experiência de cassino premium com uma variedade incrível de jogos, bônus de boas-vindas generosos e promoções emocionantes.</p>
+                
+            </div>
+            <div class="ratings-reviews">
+                <h2>Avaliações e Resenhas</h2>
+                <div class="ratings-summary">
+                    <span>4.9</span>
+                    <div class="rating-count">de 5 • 21.301 Avaliações</div>
+                </div>
+                <div class="ratings-distribution">
+                    <div class="rating-bar-container">
+                        <div class="star">★★★★★</div>
+                        <div class="rating-bar">
+                            <div class="rating-bar-fill" style="width: 90%;"></div>
+                        </div>
+                        <div class="rating-count">18.957</div>
+                    </div>
+                    <div class="rating-bar-container">
+                        <div class="star">★★★★☆</div>
+                        <div class="rating-bar">
+                            <div class="rating-bar-fill" style="width: 5%;"></div>
+                        </div>
+                        <div class="rating-count">1.065</div>
+                    </div>
+                    <div class="rating-bar-container">
+                        <div class="star">★★★☆☆</div>
+                        <div class="rating-bar">
+                            <div class="rating-bar-fill" style="width: 3%;"></div>
+                        </div>
+                        <div class="rating-count">689</div>
+                    </div>
+                    <div class="rating-bar-container">
+                        <div class="star">★★☆☆☆</div>
+                        <div class="rating-bar">
+                            <div class="rating-bar-fill" style="width: 1%;"></div>
+                        </div>
+                        <div class="rating-count">300</div>
+                    </div>
+                    <div class="rating-bar-container">
+                        <div class="star">★☆☆☆☆</div>
+                        <div class="rating-bar">
+                            <div class="rating-bar-fill" style="width: 1%;"></div>
+                        </div>
+                        <div class="rating-count">290</div>
+                    </div>
+                </div>
+                <div class="review">
+                    <p><strong>João Silva</strong></p>
+                    <p>O Bullsbet é o melhor cassino online que já usei! Os jogos são incríveis e os bônus são realmente generosos. A interface é fácil de navegar e a segurança é de primeira. Recomendo a todos!</p>
+                </div>
+                <div class="review">
+                    <p><strong>Maria Fernandes</strong></p>
+                    <p>Adoro jogar no Bullsbet! A variedade de jogos é impressionante e sempre há algo novo para experimentar. O suporte ao cliente é excelente e me sinto muito segura usando a plataforma. Cinco estrelas!</p>
+                </div>
+            </div>
+            <div class="whats-new">
+                <h2>Novidades</h2>
+                <p>Versão 3.10 • 1 semana atrás</p>
+                <p>Estamos sempre trabalhando para melhorar sua experiência no Bullsbet! Nesta versão, você encontrará:</p>
+                <p>- <strong>Novos Jogos:</strong> Adicionamos vários novos títulos para você aproveitar.</p>
+                <p>- <strong>Bônus Exclusivos:</strong> Mais formas de ganhar com nossos novos bônus.</p>
+                <p>- <strong>Eventos Festivos:</strong> Participe e ganhe prêmios incríveis.</p>
+                <p>- <strong>Segurança Aprimorada:</strong> Implementamos medidas de segurança avançadas, incluindo criptografia de ponta e autenticação multifatorial para proteger sua conta.</p>
+                <p>- <strong>Melhorias de Desempenho:</strong> Correções de bugs e otimizações para uma experiência de jogo mais suave.</p>
+            </div>
+            <div class="information">
+                <h2>Informações</h2>
+                <div class="info-item"><p><strong>Fornecedor:</strong> Bullsbet</p></div>
+                <div class="info-item"><p><strong>Tamanho:</strong> 1 MB</p></div>
+                <div class="info-item"><p><strong>Categoria:</strong> Jogos</p></div>
+                <div class="info-item"><p><strong>Compatibilidade:</strong> Funciona neste iPhone</p></div>
+                <div class="info-item"><p><strong>Idiomas:</strong> Português e mais 44</p></div>
+                <div class="info-item"><p><strong>Classificação de Idade:</strong> 18+</p></div>
+                <div class="info-item"><p><strong>Direitos Autorais:</strong> Bullsbet</p></div>
+            </div>
+            <div class="instructions" id="instructions">
+                <div class="instruction-text">
+                    <p>Para instalar o aplicativo, você precisa:</p>
+                    <p>• Abrir o menu de compartilhamento <img src="images/share-icon.png" alt="Share Icon" style="width: 20px; vertical-align: middle;"></p>
+                    <p>• Clicar em "Adicionar à Tela de Início" <img src="images/add-icon.png" alt="Add Icon" style="width: 20px; vertical-align: middle;"></p>
+                </div>
+                <div class="instruction-button">
+                    <button onclick="hideInstructions()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            function showInstructions() {
+                var instructions = document.getElementById('instructions');
+                instructions.style.display = 'block';
+                setTimeout(function() {
+                    instructions.style.bottom = '0';
+                }, 10);
+            }
+    
+            function hideInstructions() {
+                var instructions = document.getElementById('instructions');
+                instructions.style.bottom = '-100%';
+                setTimeout(function() {
+                    instructions.style.display = 'none';
+                }, 500);
+            }
+    
+            function detectStandaloneMode() {
+                return window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+            }
+    
+            window.onload = function() {
+                if (detectStandaloneMode()) {
+                    window.location.href = "https://bullsbet.net?login=1";
+                }
+            }
+    
+            window.onscroll = function() {
+                var fixedHeader = document.querySelector('.fixed-header');
+                if (document.documentElement.scrollTop > window.innerHeight * 0.1) {
+                    fixedHeader.style.transform = 'translateY(0)';
+                } else {
+                    fixedHeader.style.transform = 'translateY(-100%)';
+                }
+            }
+        </script>
+    
+    
+    </body></html>
