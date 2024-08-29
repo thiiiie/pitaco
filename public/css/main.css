@@ -482,7 +482,7 @@ body {
 
 @media screen and (max-width: 479.9px) {
     body {
-        background:url(../images/bg-mob.jpg) 50% 50%/cover no-repeat;
+        background:url(../images/bg-mob.jpeg) 50% 50%/cover no-repeat;
         overflow-y: auto
     }
 }
@@ -1638,8 +1638,8 @@ body {
 }
 
 .ribbons__title_red {
-    background-color: #ff2400;
-    color: #fff;
+    background-color: #ffffff;
+    color: #0011ff;
     display: inline-block;
     font-size: 4.44vh;
     font-weight: 700;
@@ -1649,6 +1649,7 @@ body {
     padding: 0 2vh;
     height: 7.4vh;
     line-height: 7.4vh
+    
 }
 
 @media screen and (orientation: portrait) {
@@ -1759,7 +1760,7 @@ body {
 }
 
 .decor-items__coins {
-    width: 100vw;
+    width: 0vw;
     bottom: 0;
     left: 0;
     -webkit-animation: pulseAnimation 5s ease-in-out infinite;
@@ -1767,7 +1768,7 @@ body {
 }
 
 .decor-items__coins_portrait {
-    height: 100vw;
+    height: 1vw;
     top: 0;
     left: -50vw;
     -webkit-animation: pulseAnimation90 5s ease-in-out infinite;
