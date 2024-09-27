@@ -482,7 +482,7 @@ body {
 
 @media screen and (max-width: 479.9px) {
     body {
-        background:url(../images/bg-mob.jpeg) 50% 50%/cover no-repeat;
+        background:url(../images/bg-mob.jpg) 50% 50%/cover no-repeat;
         overflow-y: auto
     }
 }
@@ -499,7 +499,10 @@ body {
     justify-content: flex-start;
     position: absolute;
     font-size: 18px;
-    font-family: Pinup-Bold,sans-serif;
+    font-family: Pinup-Bold;
+
+    src: url(../fonts/Pinup-Bold.eot) format("embedded-opentype"),url(../fonts/Pinup-Bold.ttf) format("truetype"),url(../fonts/Pinup-Bold.woff2) format("woff2"),url(../fonts/Pinup-Bold.woff) format("woff");
+
     width: 100%;
     z-index: 100
 }
@@ -528,7 +531,7 @@ body {
 
 @media screen and (orientation: portrait) {
     .header__logo>img {
-        width:30vw
+        width:41vw
     }
 }
 
@@ -539,7 +542,7 @@ body {
 
 @media screen and (orientation: portrait) {
     .header__logo>img.tiger {
-        margin-bottom:10vw;
+        margin-bottom:-1vw;
         width: 35.7vw
     }
 }
@@ -730,7 +733,9 @@ body {
     -webkit-align-items: center;
     align-items: center;
     padding: 24px 0;
-    font-family: Pinup-Bold,sans-serif
+    font-family: Pinup-Bold;
+    src: url(../fonts/Pinup-Bold.eot) format("embedded-opentype"),url(../fonts/Pinup-Bold.ttf) format("truetype"),url(../fonts/Pinup-Bold.woff2) format("woff2"),url(../fonts/Pinup-Bold.woff) format("woff");
+
 }
 
 @media screen and (max-width: 479.9px) {
@@ -1601,7 +1606,9 @@ body {
 .terms__text:first-child {
     margin: 0 0 10px;
     display: block;
-    font-family: Pinup-Regular,sans-serif
+    font-family: Pinup-Regular;
+    src: url(../fonts/Pinup-Regular.eot) format("embedded-opentype"),url(../fonts/Pinup-Regular.ttf) format("truetype"),url(../fonts/Pinup-Regular.woff2) format("woff2"),url(../fonts/Pinup-Regular.woff) format("woff");
+
 }
 
 @media screen and (max-width: 479.9px) {
@@ -1611,7 +1618,8 @@ body {
 }
 
 .ribbons {
-    font-family: Pinup-Black,sans-serif;
+    font-family: Pinup-Bold,sans-serif;
+    src: url(../fonts/Pinup-Bold.eot) format("embedded-opentype"),url(../fonts/Pinup-Bold.ttf) format("truetype"),url(../fonts/Pinup-Bold.woff2) format("woff2"),url(../fonts/Pinup-Bold.woff) format("woff");
     position: relative;
     text-align: center;
     width: 100vw;
@@ -1638,8 +1646,8 @@ body {
 }
 
 .ribbons__title_red {
-    background-color: #ffffff;
-    color: #0011ff;
+    background-color: #ff2400;
+    color: #fff;
     display: inline-block;
     font-size: 4.44vh;
     font-weight: 700;
@@ -1649,7 +1657,6 @@ body {
     padding: 0 2vh;
     height: 7.4vh;
     line-height: 7.4vh
-    
 }
 
 @media screen and (orientation: portrait) {
@@ -1760,7 +1767,7 @@ body {
 }
 
 .decor-items__coins {
-    width: 0vw;
+    width: 100vw;
     bottom: 0;
     left: 0;
     -webkit-animation: pulseAnimation 5s ease-in-out infinite;
@@ -1768,7 +1775,7 @@ body {
 }
 
 .decor-items__coins_portrait {
-    height: 1vw;
+    height: 100vw;
     top: 0;
     left: -50vw;
     -webkit-animation: pulseAnimation90 5s ease-in-out infinite;
